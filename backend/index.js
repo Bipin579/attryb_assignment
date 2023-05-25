@@ -1,12 +1,12 @@
 const express = require("express");
-const { connectMongoose } = require("./config/db");
 require("dotenv").config();
+const { connectMongoose } = require("./config/db");
 const cors = require("cors");
 const app = express();
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/UserRoute");
 const OEMRoutes = require("./routes/OEMspecsRoute");
-const DealerRoute = require("./routes/dealerInventoryRoutes")
+const DealerRoute = require("./routes/dealerInventoryRoutes");
 const MarketplaceInventoryRoute = require("./routes/marketplaceInventoryRoute");
 
 // Connect to the database
