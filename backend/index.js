@@ -23,7 +23,7 @@ app.use("/api/v2/auth", authRoutes);
 app.use("/api/v2/oem", OEMRoutes);
 app.use("/api/v2/dealer", DealerRoute);
 app.use("/api/v2/market", MarketplaceInventoryRoute);
-
+// home route
 app.get("/", (req, res) => {
   res.send("Welcome to Attryb!");
 });
