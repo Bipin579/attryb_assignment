@@ -2,17 +2,19 @@ const express = require("express");
 require("dotenv").config();
 const { connectMongoose } = require("./config/db");
 const cors = require("cors");
-const app = express();
 const cookieParser = require("cookie-parser");
 const authRoutes = require("./routes/UserRoute");
 const OEMRoutes = require("./routes/OEMspecsRoute");
 const DealerRoute = require("./routes/dealerInventoryRoutes");
 const MarketplaceInventoryRoute = require("./routes/marketplaceInventoryRoute");
 
+const app = express();
+
 // Connect to the database
 connectMongoose();
 
 // Middleware
+
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
