@@ -3,7 +3,7 @@ const jwt = require("jsonwebtoken");
 
 
 const isAuthenticated = async (req, res, next) => {
-    const { token } = req.cookies;
+    let token = req.headers.authorization;
 
     if (!token) {
         return res.status(401).send({ message: "Please login to continue", success: false });
