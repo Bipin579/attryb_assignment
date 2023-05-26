@@ -5,7 +5,7 @@ const postCar = async (req, res) => {
   try {
     const user = req.user;
     const {
-      oemSpecId,
+      oemSpecId, 
       imageUrl,
       kmsOnOdometer,
       majorScratches,

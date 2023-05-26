@@ -44,6 +44,18 @@ const login = async (req, res, next) => {
   }
 };
 
+const getUser = async (req, res) => {
+  try {
+    const user = UserModel.findById(req.user);
+
+    return res.status(201).send({ user, success: true });
+
+  } catch (error) {
+    return res.status(500).send({ message: error.message, success: false });
+  }
+}
+
+
 const logout = async (req, res) => {
   try {
     res.cookie("token", null, {
@@ -59,4 +71,4 @@ const logout = async (req, res) => {
   }
 }
 
-module.exports = { register, login, logout };
+module.exports = { register, login, logout, getUser };

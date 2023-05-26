@@ -41,7 +41,7 @@ const DealerInventorySchema = new mongoose.Schema({
     },
     publish: {
         type: Boolean,
-        default: false,
+        default: false,  
     },
     createdAt: {
         type: Date,

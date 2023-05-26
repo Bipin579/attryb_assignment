@@ -57,32 +57,30 @@ const postOEMspecs = async (req, res) => {
 };
 
 const getAllOEMspecs = async (req, res) => {
-    const { model, year } = req.query;
-    let query = {};
-  
-    if (model && year) {
-      query = { model: { $regex: new RegExp(model, "i") }, year };
-    } else if (model) {
-      query = { model: { $regex: new RegExp(model, "i") } };
-    } else if (year) {
-      query = { year };
+  const { model, year } = req.query;
+  let query = {};
+
+  if (model && year) {
+    query = { model: { $regex: new RegExp(model, "i") }, year };
+  } else if (model) {
+    query = { model: { $regex: new RegExp(model, "i") } };
+  } else if (year) {
+    query = { year };
+  }
+
+  try {
+    const specs = await OEMSpecsModel.find(query);
+
+    if (specs.length === 0) {
+      return res
+        .status(404)
+        .json({ message: "Specs not found", success: true });
     }
-  
-    try {
-      const specs = await OEMSpecsModel.find(query);
-  
-      if (specs.length === 0) {
-        return res.status(404).json({ message: "Specs not found", success:true });
-      }
-  
-      res.json(specs);
-    } catch (error) {
-      res.status(500).json({ message: "Internal server error",success:false });
-    }
+
+    res.json(specs);
+  } catch (error) {
+    res.status(500).json({ message: "Internal server error", success: false });
+  }
 };
 
 module.exports = { postOEMspecs, getAllOEMspecs };
-
-
-
-  
