@@ -46,7 +46,7 @@ const login = async (req, res, next) => {
 
 const getUser = async (req, res) => {
   try {
-    const user = UserModel.findById(req.user);
+    const user =await UserModel.findById(req.user);
 
     return res.status(201).send({ user, success: true });
 
