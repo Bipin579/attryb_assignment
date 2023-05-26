@@ -19,7 +19,13 @@ connectMongoose();
 app.use(cookieParser());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(
+  cors({
+    origin: ["http://localhost:3000", "https://attryb-bipin.onrender.com"],
+    credentials: true,
+  })
+);
+
 
 // Routes
 app.use("/api/v2/auth", authRoutes);
