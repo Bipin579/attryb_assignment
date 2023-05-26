@@ -3,6 +3,7 @@ require("dotenv").config();
 const { connectMongoose } = require("./config/db");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
 const authRoutes = require("./routes/UserRoute");
 const OEMRoutes = require("./routes/OEMspecsRoute");
 const DealerRoute = require("./routes/dealerInventoryRoutes");
@@ -18,7 +19,7 @@ connectMongoose();
 
 app.use(cookieParser());
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(
   cors({
     origin: ["http://localhost:3000"],
@@ -41,3 +42,5 @@ app.get("/", (req, res) => {
 app.listen(process.env.PORT || 5000, () => {
   console.log(`Server is running on port ${process.env.PORT}`);
 });
+
+//data
