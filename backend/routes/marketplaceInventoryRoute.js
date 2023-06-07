@@ -3,7 +3,7 @@ const router = express.Router();
 const isAuthenticated = require("../middleware/authenticate");
 const { getAllProducts} = require("../controller/marketplaceInventoryController");
 
-router.get("/", isAuthenticated, getAllProducts);
+router.get("/", getAllProducts);
 
 
 module.exports = router;

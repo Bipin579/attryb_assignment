@@ -18,6 +18,7 @@ const isAuthenticated = async (req, res, next) => {
     req.user = decoded.id;
 
     next();
+    
 };
 
 module.exports = isAuthenticated;
